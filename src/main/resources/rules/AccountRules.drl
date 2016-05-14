@@ -1,0 +1,19 @@
+package com.sample
+ 
+import com.sample.DroolsTest.Account;
+import java.math.BigDecimal;
+import accumulate com.sample.BigDecimalSumAccumulateFunction sumbd;
+ 
+rule "BigDecRule"
+when
+	total : BigDecimal() from accumulate(Account(bal : accountBalance), sumbd(bal))
+then
+	System.out.println("ACCUMULATED ACCOUNT BALANCE BIG DECIMAL " + total);
+end
+
+rule "DoubleRule"
+when
+	total : Double() from accumulate(Account(bal : accountBalance), sum(bal))
+then
+	System.out.println("ACCUMULATED ACCOUNT BALANCE DOUBLE " + total);
+end
