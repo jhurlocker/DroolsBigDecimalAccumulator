@@ -9,6 +9,7 @@ when
 	total : BigDecimal() from accumulate(Account(bal : accountBalance), sumbd(bal))
 then
 	System.out.println("ACCUMULATED ACCOUNT BALANCE BIG DECIMAL " + total);
+	System.out.println("BIG DECIMAL ROUNDED UP " + total.setScale(2, BigDecimal.ROUND_UP));
 end
 
 rule "DoubleRule"
@@ -16,4 +17,5 @@ when
 	total : Double() from accumulate(Account(bal : accountBalance), sum(bal))
 then
 	System.out.println("ACCUMULATED ACCOUNT BALANCE DOUBLE " + total);
+	System.out.println("DOUBLE ROUNDED UP " + BigDecimal.valueOf(total).setScale(2, BigDecimal.ROUND_UP));
 end
